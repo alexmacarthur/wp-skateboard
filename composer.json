@@ -1,0 +1,28 @@
+{
+  "name": "WP Skateboard",
+  "description": "A starter WP environment.",
+  "minimum-stability": "stable",
+  "authors": [
+    {
+      "name": "Alex MacArthur",
+      "email": "alex.macarthur@daveramsey.com",
+      "homepage": "http://macarthur.me"
+    }
+  ],
+  "repositories": [
+    {
+      "type": "composer",
+      "url": "https://wpackagist.org"
+    }
+  ],
+  "require": {
+        "wpackagist-plugin/better-resource-hints": "^1.1.1"
+  },
+  "extra": {
+    "wordpress-install-dir": "wp",
+    "installer-paths": {
+      "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
+      "wp-content/themes/{$name}/": ["type:wordpress-theme"]
+    }
+  }
+}

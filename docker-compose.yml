@@ -1,0 +1,33 @@
+version: '3.3'
+
+services:
+   db:
+     image: mysql:5.7
+     volumes:
+        - db_data:/var/lib/mysql
+     restart: always
+     environment:
+        MYSQL_ROOT_PASSWORD: somewordpress
+        MYSQL_DATABASE: wordpress
+        MYSQL_USER: wordpress
+        MYSQL_PASSWORD: wordpress
+
+   wordpress:
+      depends_on:
+        - db
+      image: wp-skateboard
+      ports:
+        - "8000:80"
+      restart: always
+      volumes:
+        - ./wp-content:/var/www/html/wp-content
+        # Uncomment this line if you want to play with core files locally. 
+        # You'll also need to run the `make localize` command for this directory to be populated with anything.
+        - ./core:/var/www/html/core 
+      environment:
+        WORDPRESS_DB_HOST: db:3306
+        WORDPRESS_DB_USER: wordpress
+        WORDPRESS_DB_PASSWORD: wordpress
+
+volumes:
+    db_data:

@@ -1,0 +1,6 @@
+wp-content/plugins/*
+wp-content/themes/*
+core/*
+
+composer.lock
+vendor
