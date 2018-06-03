@@ -1,11 +1,11 @@
 # WP Skateboard
-A bare-bones starter WordPress environment using Docker and Composer. Right now, this just quickly sets up a functional local environment and does not include any starter theme. That's yet to come.
+A bare-bones starter WordPress environment using Docker and Composer. Right now, this just quickly sets up a functional local environment and does not include any starter theme, although [there is a branch](https://github.com/alexmacarthur/wp-skateboard/tree/starter-theme-underscores) that illustrates how you might use Composer to install a starter theme by default. 
 
 ## How to Stand This Up
 Make sure [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/), and [Composer](https://getcomposer.org/) are installed on your machine. 
 
 1. If it's not built already, build the `wp-skateboard` image with `make docker`. 
-2. Run `make up` to turn on the Docker container. The `wp-content` directory is where you'll want to put the themes and plugins you're developing.
+2. Run `make up` to turn on the Docker container, which will be accessible at `http://localhost:8000`. The `wp-content` directory is where you'll want to put the themes and plugins you're developing.
 3. Run `make prep` to remove default plugins, themes, and database content.
 4. Run `composer install` to install any dependencies you want.
 5. When you're done, run `make down` to turn off the container.
@@ -17,7 +17,7 @@ Out of the box, the WordPress core files will only exist inside the running cont
 
 After running this command, run `make down` to turn off your container, and uncomment the `- ./core:/var/www/html/core` line in the `docker-compose.yml` file to mount that directory to the container. Run `make up` to get it going again. Any changes you make to core files should appear in the browser. 
 
-Now, to access this WP admin location, navigate to `localhost:8000/core/wp-admin`. 
+Now, to access this new WP admin location, navigate to `localhost:8000/core/wp-admin`. 
 
 ## License
 MIT © [Alex MacArthur](https://macarthur.me)
