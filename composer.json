@@ -1,12 +1,12 @@
 {
   "name": "WP Skateboard",
-  "description": "A starter WP environment.",
+  "description": "My local WordPress development built with Docker and Composer.",
   "minimum-stability": "stable",
   "authors": [
     {
       "name": "Alex MacArthur",
-      "email": "alex.macarthur@daveramsey.com",
-      "homepage": "http://macarthur.me"
+      "email": "alex@macarthur.me",
+      "homepage": "https://macarthur.me"
     }
   ],
   "repositories": [
@@ -16,7 +16,7 @@
     }
   ],
   "require": {
-        "wpackagist-plugin/better-resource-hints": "^1.1.1"
+    "wpackagist-plugin/better-resource-hints": "^1.1.2"
   },
   "extra": {
     "wordpress-install-dir": "wp",
