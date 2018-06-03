@@ -19,7 +19,6 @@
     "wpackagist-plugin/better-resource-hints": "^1.1.2"
   },
   "extra": {
-    "wordpress-install-dir": "wp",
     "installer-paths": {
       "wp-content/plugins/{$name}/": ["type:wordpress-plugin"],
       "wp-content/themes/{$name}/": ["type:wordpress-theme"]
