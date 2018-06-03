@@ -1,7 +1,6 @@
 {
   "name": "WP Skateboard",
   "description": "My local WordPress development built with Docker and Composer.",
-  "minimum-stability": "stable",
   "authors": [
     {
       "name": "Alex MacArthur",
@@ -13,10 +12,16 @@
     {
       "type": "composer",
       "url": "https://wpackagist.org"
+    },
+    {
+      "type": "git",
+      "url": "https://github.com/alexmacarthur/_s"
     }
   ],
   "require": {
-    "wpackagist-plugin/better-resource-hints": "^1.1.2"
+    "wpackagist-plugin/better-resource-hints": "^1.1.2",
+    "_s": "dev-add-composer-file",
+    "composer/installers": "^1.5"
   },
   "extra": {
     "installer-paths": {
