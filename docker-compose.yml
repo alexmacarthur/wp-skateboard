@@ -13,9 +13,10 @@ services:
         MYSQL_PASSWORD: wordpress
 
    wordpress:
+      build: .
+      image: wp-skateboard
       depends_on:
         - db
-      image: wp-skateboard
       ports:
         - "8000:80"
       restart: always

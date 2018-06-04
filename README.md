@@ -1,14 +1,13 @@
 # WP Skateboard
-A bare-bones starter WordPress environment using Docker and Composer. Right now, this just quickly sets up a functional local environment and does not include any starter theme, although [there is a branch](https://github.com/alexmacarthur/wp-skateboard/tree/starter-theme-underscores) that illustrates how you might use Composer to install a starter theme by default. 
+A bare-bones starter WordPress environment using Docker and Composer. Right now, this just quickly sets up a functional local environment and does not include any starter theme, although [there is a branch](https://github.com/alexmacarthur/wp-skateboard/tree/starter-theme-underscores) that illustrates how you might use Composer to install one.
 
 ## How to Stand This Up
 Make sure [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/), and [Composer](https://getcomposer.org/) are installed on your machine. 
 
-1. If it's not built already, build the `wp-skateboard` image with `make docker`. 
-2. Run `make up` to turn on the Docker container, which will be accessible at `http://localhost:8000`. The `wp-content` directory is where you'll want to put the themes and plugins you're developing.
-3. Run `make prep` to remove default plugins, themes, and database content.
-4. Run `composer install` to install any dependencies you want.
-5. When you're done, run `make down` to turn off the container.
+1. Run `make up`. If it's the first time being run, this will build a `wp-skateboard` Docker image. After this, the container will be turned on, which will be accessible at `http://localhost:8000`. The `wp-content` directory is where you'll want to put the themes and plugins you're developing. After this initial build, turning on the container in the future will be much quicker.
+2. Optionally run `make prep`. This will remove plugins, themes, and database content that come with a default WordPress installation.
+3. Optionally run `composer install`. This will install any dependencies you have set in your `composer.json` file. 
+4. When you're done, run `make down` to turn off the container.
 
 There are some other commands in the `Makefile` too, so feel free to check those out or add your own.
 
