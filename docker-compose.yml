@@ -1,6 +1,15 @@
 version: '3.3'
 
 services:
+  mailcatcher:
+    image: schickling/mailcatcher
+    restart: always
+    ports:
+      - "1025:1025"
+      - "1080:1080"
+    environment:
+      MAILCATCHER_PORT: 1025
+      
   db:
     image: mariadb
     volumes:
