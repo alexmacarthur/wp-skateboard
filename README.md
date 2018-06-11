@@ -11,6 +11,14 @@ Make sure [Docker](https://www.docker.com/), [Docker Compose](https://docs.docke
 
 There are some other commands in the `Makefile` too, so feel free to check those out or add your own.
 
+## Connect to SQL Database
+You can use a tool like [Sequel Pro](https://www.sequelpro.com/) to more easily see what's happening inside your database. To connect, use the following configuration: 
+
+**Host:** 127.0.0.1  
+**Username:** root  
+**Password:** root  
+**Port:** 3306  
+
 ## Want to Tinker w/ WordPress Core?
 Out of the box, the WordPress core files will only exist inside the running container, with no _easy_ access to modify them if you want to play around or troubleshoot. To give yourself the core files with which to tinker, run the `make localize` command while your container is running to install the files locally, mount them to your container, and modify your WordPress configuration so the site uses these files instead of what's built by the image. 
 

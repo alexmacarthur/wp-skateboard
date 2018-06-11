@@ -1,5 +1,6 @@
 wp-content/plugins/*
 wp-content/themes/*
+wp-content/uploads/*
 core/*
 
 composer.lock
