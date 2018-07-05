@@ -1,7 +1,9 @@
-wp-content/plugins/*
-wp-content/themes/*
-wp-content/uploads/*
-core/*
+content/plugins/*
+content/themes/*
+content/uploads/*
+wordpress/*
+data/*
+wordpress/*
 
 composer.lock
 vendor
