@@ -1,0 +1,31 @@
+{
+    "name": "WP Skateboard",
+    "description": "My local WordPress development built with Docker",
+    "minimum-stability": "stable",
+    "authors": [
+        {
+            "name": "Alex MacArthur",
+            "email": "alex@macarthur.me",
+            "homepage": "https://macarthur.me"
+        }
+    ],
+    "repositories": [
+        {
+            "type": "composer",
+            "url": "https://wpackagist.org"
+        }
+    ],
+    "require": {
+        "wpackagist-plugin/better-resource-hints": "^1.1.2"
+    },
+    "extra": {
+        "installer-paths": {
+            "plugins/{$name}/": [
+                "type:wordpress-plugin"
+            ],
+            "themes/{$name}/": [
+                "type:wordpress-theme"
+            ]
+        }
+    }
+}

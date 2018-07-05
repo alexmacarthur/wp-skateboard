@@ -1,16 +1,10 @@
-.PHONY: docker docker-compose
+.PHONY: bash docker-compose
 
-docker:
-	docker build -t wp-skateboard .
-
-prep: 
-	sh scripts/prep.sh
-
-localize:
-	sh scripts/localize.sh
+setup: 
+	bash setup.sh
 
 up: 
-	docker-compose up
+	docker-compose up -d
 
 down: 
 	docker-compose down
@@ -19,4 +13,4 @@ restart:
 	make up && make down
 
 bash:
-	docker-compose exec --user root wordpress /bin/bash
+	docker-compose exec --user root php-fpm /bin/bash

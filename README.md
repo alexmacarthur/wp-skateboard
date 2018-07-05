@@ -1,15 +1,36 @@
 # WP Skateboard
-A bare-bones starter WordPress environment using Docker and Composer. Right now, this just quickly sets up a functional local environment and does not include any starter theme, although [there is a branch](https://github.com/alexmacarthur/wp-skateboard/tree/starter-theme-underscores) that illustrates how you might use Composer to install one.
+A bare-bones starter WordPress environment using Docker. Right now, this just quickly sets up a functional local PHP environment and WordPress installation. Out of the box, the container comes installed with tools like Composer and the WP CLI. 
 
 ## How to Stand This Up
-Make sure [Docker](https://www.docker.com/), [Docker Compose](https://docs.docker.com/compose/), and [Composer](https://getcomposer.org/) are installed on your machine. 
+Make sure [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) are installed on your machine.
 
-1. Run `make up`. If it's the first time being run, this will build a `wp-skateboard` Docker image. After this, the container will be turned on, which will be accessible at `http://localhost:8000`. The `wp-content` directory is where you'll want to put the themes and plugins you're developing. After this initial build, turning on the container in the future will be much quicker.
-2. Optionally run `make prep`. This will remove plugins, themes, and database content that come with a default WordPress installation.
-3. Optionally run `composer install`. This will install any dependencies you have set in your `composer.json` file. 
-4. When you're done, run `make down` to turn off the container.
+1. Run `docker-compose up` to turn on the container. If this is your first time using this environment, run `bash setup.sh`. This will do the following things to get set up:
+* Download & install WordPress
+* Enable WP debugging
+* Remove default posts, comments, and terms. 
+* Remove default plugins, themes, widgets. 
+* Install any dependencies you have noted in your `content/composer.json` file. 
+1. After setup, navigate to http://localhost/wp-admin, where you'll be able to login with `admin` and `password` as the username & password. 
+2. In the future, just turn on the container by running `docker-compose up`. This will turn on the container and make the `/wordpress` directory the web root, with the `content` directory being mounted inside of that. **You should do all of your local development (themes, plugins, etc.) inside the `content` directory at the root of this project.**
+3. When you're done, run `docker-compose down` to turn off the container.
 
 There are some other commands in the `Makefile` too, so feel free to check those out or add your own.
+
+## Composer for Dependency Management
+Composer is installed inside the container for easier dependency management, and a `composer.json` file is included in the `wp-content`. These are automatically installed on setup, but you can also install/update them manually using the following command: 
+
+```
+docker-compose exec --user root php-fpm /bin/bash -c "cd wp-content && composer install"
+```
+
+Or, to update packages, use: 
+
+```
+docker-compose exec --user root php-fpm /bin/bash -c "cd wp-content && composer update"
+```
+
+## Mailcatcher
+Mailcatcher is setup to trap emails sent from your application. View these emails by going to [http://localhost:1080/](http://localhost:1080/).
 
 ## Connect to SQL Database
 You can use a tool like [Sequel Pro](https://www.sequelpro.com/) to more easily see what's happening inside your database. To connect, use the following configuration: 
@@ -19,12 +40,25 @@ You can use a tool like [Sequel Pro](https://www.sequelpro.com/) to more easily 
 **Password:** root  
 **Port:** 3306  
 
-## Want to Tinker w/ WordPress Core?
-Out of the box, the WordPress core files will only exist inside the running container, with no _easy_ access to modify them if you want to play around or troubleshoot. To give yourself the core files with which to tinker, run the `make localize` command while your container is running to install the files locally, mount them to your container, and modify your WordPress configuration so the site uses these files instead of what's built by the image. 
+## Other Questions
 
-After running this command, run `make down` to turn off your container, and uncomment the `- ./core:/var/www/html/core` line in the `docker-compose.yml` file to mount that directory to the container. Run `make up` to get it going again. Any changes you make to core files should appear in the browser. 
+### Where do I put my projects?
+Everything should go in the `content` directory, which will be mounted to the container when it's turned on. 
 
-Now, to access this new WP admin location, navigate to `localhost:8000/core/wp-admin`. 
+### How do I modify the WordPress configuration?
+Right now, directory modify the `wp-config.php` file in the `wordpress` directory. 
+
+### How do I navigate the file system of the running container? 
+Run `docker-compose exec --user root php-fpm /bin/bash`, or use the `make bash` shortcut (assuming `make` is installed).
+
+### Can I change the server configuration?
+Yes. In the `config` directory, a `default.conf` and `php.ini` file exist for you to customize nginx & PHP as needed. These are mounted to the container when you turn it on.
+
+### How do I change the version of PHP?
+In the `docker-compose.yml` file, change the tag in this line: `image: 10up/phpfpm:7.2`. You can [see a list of available tags here.](https://hub.docker.com/r/10up/phpfpm/tags)
+
+## Thanks
+This environment was heavily inspired by [10up](https://github.com/10up) and their [wp-local-docker](https://github.com/10up/wp-local-docker) project. So, thanks to them.
 
 ## License
 MIT © [Alex MacArthur](https://macarthur.me)
