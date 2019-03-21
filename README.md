@@ -4,15 +4,17 @@ A bare-bones starter WordPress environment using Docker. Right now, this just qu
 ## How to Stand This Up
 Make sure [Docker](https://www.docker.com/) and [Docker Compose](https://docs.docker.com/compose/) are installed on your machine.
 
-1. Run `docker-compose up` to turn on the container. If this is your first time using this environment, run `bash setup.sh`. This will do the following things to get set up:
+1. Clone this repository into a directory. 
+2. Navigate into that directory. 
+3. Run `docker-compose up` to turn on the container. If this is your first time using this environment, run `bash setup.sh`. This will do the following things to get set up:
 * Download & install WordPress
 * Enable WP debugging
 * Remove default posts, comments, and terms. 
 * Remove default plugins, themes, widgets. 
 * Install any dependencies you have noted in your `content/composer.json` file. 
-1. After setup, navigate to http://localhost/wp-admin, where you'll be able to login with `admin` and `password` as the username & password. 
-2. In the future, just turn on the container by running `docker-compose up`. This will turn on the container and make the `/wordpress` directory the web root, with the `content` directory being mounted inside of that. **You should do all of your local development (themes, plugins, etc.) inside the `content` directory at the root of this project.**
-3. When you're done, run `docker-compose down` to turn off the container.
+4. After setup, navigate to http://localhost/wp-admin, where you'll be able to login with `admin` and `password` as the username & password. 
+5. In the future, just turn on the container by running `docker-compose up`. This will turn on the container and make the `/wordpress` directory the web root, with the `content` directory being mounted inside of that. **You should do all of your local development (themes, plugins, etc.) inside the `content` directory at the root of this project.**
+6. When you're done, run `docker-compose down` to turn off the container.
 
 There are some other commands in the `Makefile` too, so feel free to check those out or add your own.
 
