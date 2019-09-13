@@ -1,5 +1,5 @@
 {
-    "name": "WP Skateboard",
+    "name": "wp-skateboard",
     "description": "My local WordPress development built with Docker",
     "minimum-stability": "stable",
     "authors": [
