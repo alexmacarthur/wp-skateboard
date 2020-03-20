@@ -1,6 +1,6 @@
 {
     "name": "wp-skateboard",
-    "description": "My local WordPress development built with Docker",
+    "description": "My local WordPress development built with Docker.",
     "minimum-stability": "stable",
     "authors": [
         {
@@ -16,7 +16,6 @@
         }
     ],
     "require": {
-        "wpackagist-plugin/better-resource-hints": "^1.1.2"
     },
     "extra": {
         "installer-paths": {
