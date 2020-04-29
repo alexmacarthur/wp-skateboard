@@ -1,5 +1,5 @@
 {
-    "name": "wp-skateboard",
+    "name": "alexmacarthur/wp-skateboard",
     "description": "My local WordPress development built with Docker.",
     "minimum-stability": "stable",
     "authors": [
@@ -15,8 +15,6 @@
             "url": "https://wpackagist.org"
         }
     ],
-    "require": {
-    },
     "extra": {
         "installer-paths": {
             "plugins/{$name}/": [
