@@ -3,6 +3,9 @@
 # Download core. 
 docker-compose exec --user root php-fpm wp core download --force --allow-root
 
+# Grant write access to prevent plugin/media upload issues.
+docker-compose exec --user root php-fpm chmod +x -R /var/www/html/wp-content
+
 # Create WP config file (if one doesn't already exist).
 if [ ! -f wordpress/wp-config.php ]; then
     docker-compose exec --user root php-fpm wp config create \
